@@ -50,3 +50,6 @@ jobs:
 
       - name: Run Web Tests
         run: ./gradlew webTest
+
+      - name: List files with details
+        run: ls -l
