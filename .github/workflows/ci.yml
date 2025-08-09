@@ -9,14 +9,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-
-      - name: List files with permissions (before chmod)
-        run: ls -l
+        with:
+          fetch-depth: 0
 
       - name: Set executable permission for gradlew
         run: chmod +x ./gradlew
 
-      - name: List files with permissions (after chmod)
+      - name: List files
         run: ls -l
 
       - name: Set up JDK 17
@@ -26,7 +25,8 @@ jobs:
           distribution: 'temurin'
 
       - name: Run API Tests
-        run: ./gradlew apiTest
+        run: bash ./gradlew apiTest
+
 
   web-tests:
     runs-on: ubuntu-latest
