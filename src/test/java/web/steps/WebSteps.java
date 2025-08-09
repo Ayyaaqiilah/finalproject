@@ -13,7 +13,6 @@ public class WebSteps {
     private WebDriver driver;
     private LoginPage loginPage;
 
-    // kita baca env var CI_HEADLESS untuk trigger headless (CI set to "true")
     private boolean isHeadless() {
         String env = System.getenv("CI_HEADLESS");
         return env != null && env.equalsIgnoreCase("true");

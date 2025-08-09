@@ -9,17 +9,17 @@ public class UserApi extends BaseApi {
 
     public Response getUserById(String userId) {
         return request()
-                .header("app-id", APP_ID)   // tambahkan header app-id
+                .header("app-id", APP_ID)
                 .get("/user/" + userId);
     }
 
     public Response createUser(String firstName, String lastName, String email) {
         JSONObject body = new JSONObject();
-        body.put("title", "mr"); // wajib
+        body.put("title", "mr");
         body.put("firstName", firstName);
         body.put("lastName", lastName);
         body.put("email", email);
-        body.put("picture", "https://randomuser.me/api/portraits/med/men/1.jpg"); // wajib
+        body.put("picture", "https://randomuser.me/api/portraits/med/men/1.jpg");
 
         return request()
                 .header("app-id", APP_ID)
@@ -33,7 +33,7 @@ public class UserApi extends BaseApi {
         body.put("firstName", firstName);
 
         return request()
-                .header("app-id", APP_ID)    // tambahkan header app-id
+                .header("app-id", APP_ID)
                 .header("Content-Type", "application/json")
                 .body(body.toString())
                 .put("/user/" + userId);
@@ -41,7 +41,7 @@ public class UserApi extends BaseApi {
 
     public Response deleteUser(String userId) {
         return request()
-                .header("app-id", APP_ID)    // tambahkan header app-id
+                .header("app-id", APP_ID)
                 .delete("/user/" + userId);
     }
 }

@@ -19,7 +19,6 @@ public class ApiSteps {
 
     @Given("I create a new user with firstName {string}, lastName {string}, and email {string}")
     public void iCreateANewUser(String firstName, String lastName, String email) {
-        // Kalau email "unique" atau kosong, generate email unik
         if (email == null || email.isEmpty() || email.equalsIgnoreCase("unique")) {
             email = firstName.toLowerCase() + "." + lastName.toLowerCase() + System.currentTimeMillis() + "@example.com";
         }
