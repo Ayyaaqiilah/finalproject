@@ -12,11 +12,14 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Set executable permission for gradlew
+      - name: Show gradlew permission before chmod
+        run: ls -l gradlew
+
+      - name: Set executable gradlew
         run: chmod +x ./gradlew
 
-      - name: List files before run
-        run: ls -l
+      - name: Show gradlew permission after chmod
+        run: ls -l gradlew
 
       - name: Set up JDK 17
         uses: actions/setup-java@v3
@@ -34,14 +37,14 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: List files before chmod
-        run: ls -l
+      - name: Show gradlew permission before chmod
+        run: ls -l gradlew
 
-      - name: Set executable permission for gradlew
+      - name: Set executable gradlew
         run: chmod +x ./gradlew
 
-      - name: List files after chmod
-        run: ls -l
+      - name: Show gradlew permission after chmod
+        run: ls -l gradlew
 
       - name: Set up JDK 17
         uses: actions/setup-java@v3
@@ -51,6 +54,3 @@ jobs:
 
       - name: Run Web Tests
         run: bash ./gradlew webTest
-
-      - name: List files after tests
-        run: ls -l
