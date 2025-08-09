@@ -15,7 +15,7 @@ jobs:
       - name: Set executable permission for gradlew
         run: chmod +x ./gradlew
 
-      - name: List files
+      - name: List files before run
         run: ls -l
 
       - name: Set up JDK 17
@@ -27,19 +27,20 @@ jobs:
       - name: Run API Tests
         run: bash ./gradlew apiTest
 
-
   web-tests:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
-      - name: List files with permissions (before chmod)
+      - name: List files before chmod
         run: ls -l
 
       - name: Set executable permission for gradlew
         run: chmod +x ./gradlew
 
-      - name: List files with permissions (after chmod)
+      - name: List files after chmod
         run: ls -l
 
       - name: Set up JDK 17
@@ -49,7 +50,7 @@ jobs:
           distribution: 'temurin'
 
       - name: Run Web Tests
-        run: ./gradlew webTest
+        run: bash ./gradlew webTest
 
-      - name: List files with details
+      - name: List files after tests
         run: ls -l
